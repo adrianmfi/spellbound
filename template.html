@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Acquire phone sensor data</title> 
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+<link href="myStyle.css" rel="stylesheet" type="text/css" media="screen" />
+<meta charset=utf-8> 
+<center>
+<div class = "heading">
+    Gather sensor data
+</div>
+
+<div class = "livefeed", id="livefeed">
+        Running time <span id="time">0.00</span> s
+</div>
+
+<div class = "buttons">
+    <br><button onclick="toggle(this)" class="button">Start</button>
+    <button onclick="reset()" class="button">Reset</button>
+    <button onclick="download()" class="button">Download</button>
+</div>
+
+<div id="plotx" style="width:600px;height:250px;"></div>
+<div id="ploty" style="width:600px;height:250px;"></div>
+<div id="plotz" style="width:600px;height:250px;"></div>
+
+</center>
+
+<script src="gatherData.js"></script>
+<noscript>To use this, please enable JavaScript.</noscript>
+</body>
+</html>
