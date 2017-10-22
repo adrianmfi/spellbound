@@ -22,14 +22,20 @@ function download() {
     var data, filename, link;
     var csv = generateCSV();
 
-    filename = 'export.csv';
+    filename = 'data' + (new Date()).getTime() + '.csv';
     data ='data:text/octet-stream,' + encodeURI(csv);
 
     hiddenElement = document.createElement('a');
     hiddenElement.href =  data;
     hiddenElement.target = '_blank';
-    hiddenElement.download = 'sensorData.csv';
+    hiddenElement.download = filename;
     hiddenElement.click();
+}
+
+function submit_data(){
+    console.log('submitting data')
+    var list = [1,2,3]
+    $.post('submit', {'measurements': measurements},null,'json');
 }
 
 function generateCSV() {  
@@ -61,6 +67,8 @@ function plotResults(){
     Plotly.newPlot( 'plotz', [{y: measurements[2] }], layout, {staticPlot: true})
 
 }
+
+document.getElementById ("btn_upload").addEventListener ("click", submit_data, false);
 
 if (window.DeviceMotionEvent) {
 	window.ondevicemotion = function(e) {

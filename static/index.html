@@ -3,6 +3,7 @@
 <head>
     <title>Acquire phone sensor data</title> 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <link href="myStyle.css" rel="stylesheet" type="text/css" media="screen" />
@@ -20,6 +21,7 @@
     <br><button onclick="toggle(this)" class="button">Start</button>
     <button onclick="reset()" class="button">Reset</button>
     <button onclick="download()" class="button">Download</button>
+    <button id="btn_upload" class="button">Submit</button>
 </div>
 
 <div id="plotx" style="width:600px;height:250px;"></div>
