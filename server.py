@@ -1,5 +1,9 @@
+import json
+import time
+import pandas as pd
 from flask import Flask
 from flask import request
+
 
 app = Flask(__name__)
 
@@ -7,12 +11,12 @@ app = Flask(__name__)
 def index():
     return app.send_static_file('index.html')
 
-@app.route('/submit', methods=['POST'])
-def posttest():
-    print(request.form.getlist('measurements[]'))
-    mes_x = request.form.getlist('measurements[0][]')
-    mes_y = request.form.getlist('measurements[1][]')
-    mes_z = request.form.getlist('measurements[2][]')
+@app.route('/submit_measurements', methods=['POST'])
+def recieved_measurements():
+    mes = json.loads(request.form.getlist('measurements')[0])
+    my_df = pd.DataFrame(mes)
+    my_df.to_csv('./csv/mes'+str(time.time()) +'.csv', index=False, header = False)
+    print('saved csv')
     return ('ok')
 
 @app.route('/myStyle.css')

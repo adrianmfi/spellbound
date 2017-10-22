@@ -32,10 +32,11 @@ function download() {
     hiddenElement.click();
 }
 
+
 function submit_data(){
-    console.log('submitting data')
-    var list = [1,2,3]
-    $.post('submit', {'measurements': measurements},null,'json');
+    $.post('/submit_measurements', {measurements:JSON.stringify(measurements)},function(){
+        alert('success');
+    });
 }
 
 function generateCSV() {  
